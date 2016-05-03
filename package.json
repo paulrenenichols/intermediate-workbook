@@ -8,7 +8,15 @@
   },
   "author": "Kevin Colten",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "test:apps": "mocha apps",
+    "test:apps:01": "mocha apps/01PigLatin.js",
+    "test:apps:02": "mocha apps/02RockPaperScissors.js",
+    "test:apps:03": "mocha apps/03TicTacToe.js",
+    "test:apps:04": "mocha apps/04TowersOfHanoi.js",
+    "test:apps:05": "mocha apps/05MasterMind.js",
+    "test:apps:06": "mocha apps/06SpaceTravelToMars.js",
+    "test:apps:06.1": "mocha apps/06.1Checkers.js"
   },
   "bugs": {
     "url": "https://github.com/AustinCodingAcademy/intermediate-workbook/issues"
