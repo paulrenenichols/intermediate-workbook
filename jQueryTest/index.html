@@ -80,7 +80,7 @@
         cursor: pointer;
         border: white 1px solid;
         outline: none;
-        transition: background-color 2s ease-out, color 2s ease-out;
+        transition: background-color 0.5s ease-out, color 0.5s ease-out;
         background-color: #877;
         color: white;
         font-size: 30px;
@@ -139,14 +139,33 @@
       $(document).ready(function() {
         function calculateBillTotal() {
           // Add up the bill
+
+          // Grab the .bill-section element
           var billSection = $('.bill-section');
+
+          // Find the .bill element
+          // within the .bill-section element
+          // (scoping our query)
           var bill        = $('.bill', billSection);
+
+          // Grab all price, except total
+          // Scope to bill
           var prices      = $('.item:not(.total) [data-price]', bill);
+
+          // Initialize total sum to 0
           var total       = 0;
 
           console.log('prices.length: ' + prices.length);
 
+          // jQuery.each()
+          // Go thru each price, parseFloat() it
+          // to convert from string to number
           prices.each(function () {
+            // *this* here is the [data-price]
+            // element
+            // We must jQuery select it before
+            // using jQuery methods, bc this is
+            // an element, not a jQuery object
             total += parseFloat($(this).data('price'));
           });
 
@@ -167,12 +186,14 @@
             return;
           }
 
-          clickerSectionButton.toggleClass('clicked');
-
-          setTimeout(function () {
-            clickerSectionButton.toggleClass('clicked');
-          }, 3000);
+          clickerSectionButton.addClass('clicked');
         });
+
+        // remove class when transition is over
+        clickerSectionButton.on('transitionend', function() {
+            console.log('transitionend');
+            clickerSectionButton.removeClass('clicked');
+        })
       });
     </script>
   </body>
