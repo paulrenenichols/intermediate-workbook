@@ -1,0 +1,228 @@
+<html>
+  <head>
+    <style type="text/css">
+      .clearfix::before {
+        content: "";
+        display: table;
+      }
+
+      .clearfix::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      body {
+        margin: 0;
+        background: #eae0e0;
+      }
+
+      .container {
+        width: 100%;
+        height: 100%;
+        white-space: nowrap;
+      }
+
+      .bill-section {
+        display: block;
+        width: 60%;
+        padding: 2.5%;
+        margin: 0 auto;
+        border: none;
+        white-space: normal;
+        vertical-align: top;
+        height: 100%;
+        font-size: 16px;
+        color: #0036c7;
+      }
+      .bill-section h1 {
+        display: block;
+        font-size: 30px;
+        margin: 5px 0;
+        color: #487ab4;
+        text-align: center;
+      }
+      .bill-section h1 span {
+        display: inline-block;
+        padding: 0 5%;
+        border-bottom: #444 2px solid;
+      }
+      .bill-section .bill {
+        padding: 5%;
+        font-size: 24px;
+      }
+      .bill-section .bill .item {
+        position: relative;
+        height: 30px;
+      }
+      .bill-section .bill .item .name {
+        float: left;
+      }
+      .bill-section .bill .item .name::after {
+        content: ":";
+      }
+      .bill-section .bill .item [data-price] {
+        color: #229930;
+        float: right;
+      }
+      .bill-section .bill .item [data-price]:not([data-price=""])::before {
+        content: "$";
+      }
+      .bill-section .bill .item.total {
+        margin-top: 30px;
+      }
+      .bill-section .bill .item.total .name {
+        color: red;
+      }
+      .bill-section .bill .item .price-buttons {
+        display: none;
+        position: absolute;
+        right: -40px;
+        height: 30px;
+        padding: 0 10px;
+      }
+      .bill-section .bill .item.selected .price-buttons {
+        display: block;
+      }
+      .bill-section .bill .item .price-buttons button {
+        position: absolute;
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 30px;
+      }
+      .bill-section .bill .item .price-buttons button.price-delete {
+      }
+      .bill-section .bill .item .price-buttons button.price-new-up {
+        margin-left: 35px;
+      }
+      .bill-section .bill .item .price-buttons button.price-new-down {
+        margin-left: 70px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="bill-section">
+        <h1><span>Bill</span></h1>
+        <div class="bill">
+          <div class="item clearfix">
+            <span class="name">Corn Dog</span>
+            <span data-price="5.25"></span>
+            <div class="price-buttons">
+              <button type="button" class="price-delete">&#9003;</button>
+              <button type="button" class="price-new-up">&#11014;</button>
+              <button type="button" class="price-new-down">&#11015;</button>
+            </div>
+          </div>
+          <div class="item clearfix">
+            <span class="name">Espresso - double</span>
+            <span data-price="3.50"></span>
+            <div class="price-buttons">
+              <button type="button" class="price-delete">&#9003;</button>
+              <button type="button" class="price-new-up">&#11014;</button>
+              <button type="button" class="price-new-down">&#11015;</button>
+            </div>
+          </div>
+          <div class="item clearfix">
+            <span class="name">Fine $ingle Malt</span>
+            <span data-price="25"></span>
+            <div class="price-buttons">
+              <button type="button" class="price-delete">&#9003;</button>
+              <button type="button" class="price-new-up">&#11014;</button>
+              <button type="button" class="price-new-down">&#11015;</button>
+            </div>
+          </div>
+          <div class="item clearfix">
+            <span class="name">Fried Twinky</span>
+            <span data-price="2.25"></span>
+            <div class="price-buttons">
+              <button type="button" class="price-delete">&#9003;</button>
+              <button type="button" class="price-new-up">&#11014;</button>
+              <button type="button" class="price-new-down">&#11015;</button>
+            </div>
+          </div>
+          <div class="item clearfix">
+            <span class="name">Jamon De Espana</span>
+            <span data-price="9.50"></span>
+            <div class="price-buttons">
+              <button type="button" class="price-delete">&#9003;</button>
+              <button type="button" class="price-new-up">&#11014;</button>
+              <button type="button" class="price-new-down">&#11015;</button>
+            </div>
+          </div>
+          <div class="item total clearfix">
+            <span class="name">Total</span>
+            <span data-price=""></span>
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- load jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script>
+      // when the document is done loading, run the script inside
+      $(document).ready(function() {
+        // Grab the .bill-section element
+        var $billSection  = $('.bill-section');
+
+        // Find the .bill element
+        // within the .bill-section element
+        // (scoping our query)
+        var $bill         = $('.bill', $billSection);
+
+        var $items        = $('.item:not(.total)', $bill);
+
+        // Grab all price, except total
+        // Scope to bill
+        var $prices       = $('.item:not(.total) [data-price]', $bill);
+
+        function calculateBillTotal() {
+          // Add up the bill
+
+          // Initialize total sum to 0
+          var total       = 0;
+
+          console.log('prices.length: ' + $prices.length);
+
+          // jQuery.each()
+          // Go thru each price, parseFloat() it
+          // to convert from string to number
+          $prices.each(function () {
+            // *this* here is the [data-price]
+            // element
+            // We must jQuery select it before
+            // using jQuery methods, bc this is
+            // an element, not a jQuery object
+            total += parseFloat($(this).data('price'));
+          });
+
+          console.log('total: ', total);
+
+          var $totalElement = $('.total', $bill);
+          $totalPrice = $('[data-price]', $totalElement);
+          $totalPrice.attr('data-price', total);
+          $totalPrice.text(total);
+
+          console.log("totalElement.data('price'): ", $totalElement.data('price'));
+        }
+
+
+        // Initialize price spans
+        $prices.each(function () {
+          var $price = $(this);
+          $price.text($price.data('price'));
+        });
+
+        // Calculate initial total
+        calculateBillTotal();
+
+        $items.hover(function () {
+          $items.removeClass('selected');
+          $(this).addClass('selected');
+        });
+      });
+    </script>
+  </body>
+</html>
