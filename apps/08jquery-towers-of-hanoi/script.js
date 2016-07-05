@@ -2,19 +2,19 @@
 
 $(document).ready(function() {
   // Put app logic here
-  var block = null;
+  var $block = null;
 
   $('[data-stack]').click(function() {
     var $children = $(this).children();
-    if (block !== null) {
-      if (($children.length === 0) || (block.data('block') < $children.last().data('block'))) {
-        $(this).append(block);
-        block = null;
+    if ($block !== null) {
+      if (($children.length === 0) || ($block.data('block') < $children.last().data('block'))) {
+        $(this).append($block);
+        $block = null;
       }
     }
     else if ($children.length > 0) {
-      block = $children.last();
-      block.detach();
+      $block = $children.last();
+      $block.detach();
     }
 
     checkForWin();
