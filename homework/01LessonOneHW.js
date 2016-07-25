@@ -99,36 +99,122 @@ var notTrue = false;
 var notNotTrue = true;
 
 // ****
+// Concept Checkpoint
+//
+// Write your answer in comments
+//
+// What is the difference between the "and" and the "or" operators? Explain why you would use each of them.
+//
+// Your Answer Goes Here:
+//
+// ****
+
+// ****
+// Truthiness
+// ****
+
+var bob = 'bob';
+var emptyString = '';
+
+// Problem 17:
+// What is the value of !!bob
+
+var notNotBob = true;
+
+// Problem 18:
+// What is the value of !!emptyString
+
+var notNotEmptyString = false;
+
+// Problem 19:
+// What is the value of !null
+
+var notNull = true;
+
+// Problem 20:
+// What is the value of !!undefined
+
+var notNotUndefined = false;
+
+// ****
+// Concept Checkpoint
+//
+// Write your answer in comments
+//
+// Explain truthiness and falsiness in your own words. Provide an example for each.
+//
+// Your Answer Goes Here:
+//
+// ****
+
+// ****
 // Comparison Operators
 // ****
 
-// Problem 17
+// Problem 21
 // What is the value of 4 === 4
 var fourEqualTofour = true;
 
-// Problem 18:
+// Problem 22:
 // What is the value of 4 !== 4
 var fourNotEqualTofour = false;
 
-// Problem 19:
+// Problem 23:
 // What is the value of -3 === 10
 var negativeThreeEqualToTen = false;
 
-// Problem 20:
+// Problem 24:
 // What is the value of -3 < 10
 var negativeThreeLessThanTen = true;
 
-// Problem 21:
+// Problem 25:
 // What is the value of -3 <= 10
 var negativeThreeLessThanOrEqualToTen = true;
 
-// Problem 22:
+// Problem 26:
 // What is the value of -3 > 10
 var negativeThreeGreaterThanTen = false;
 
-// Problem 23:
+// Problem 27:
 // What is the value of -3 >= 10
 var negativeThreeGreaterThanOrEqualToTen = false;
+
+// Problem 28:
+// What is the value of '4' == 4
+var stringFourEqualsNumberFour = true;
+
+// Problem 29:
+// What is the value of '4' != 4
+var stringFourNotEqualsNumberFour = false;
+
+// Problem 30:
+// What is the value of '4' === 4
+var stringFourStrictEqualsNumberFour = false;
+
+// Problem 31:
+// What is the value of '4' !== 4
+var stringFourStrictNotEqualsNumberFour = true;
+
+// ****
+// Concept Checkpoint
+//
+// Write your answer in comments
+//
+// What’s the difference between == and ===?
+//
+// Your Answer Goes Here:
+//
+//
+// What’s the difference between != and !==?
+//
+// Your Answer Goes Here:
+//
+// ****
+
+
+// ****
+// Tests
+// ****
 
 describe('Lesson 1 Homework', function () {
 
@@ -238,46 +324,97 @@ describe('Lesson 1 Homework', function () {
     });
   });
 
+  describe('Truthiness', function () {
+
+    describe('Problem 17: !!bob', function () {
+      it('should be true', function () {
+          assert.equal(notNotBob, !!bob);
+      });
+    });
+
+    describe('Problem 18: !!emptyString', function () {
+      it('should be false', function () {
+          assert.equal(notNotEmptyString, !!emptyString);
+      });
+    });
+
+    describe('Problem 19: !null', function () {
+      it('should be true', function () {
+          assert.equal(notNull, !null);
+      });
+    });
+
+    describe('Problem 20: !!undefined', function () {
+      it('should be false', function () {
+          assert.equal(notNotUndefined, !!undefined);
+      });
+    });
+  });
+
   describe('Comparison Operators', function () {
-    describe('Problem 17: 4 === 4', function () {
+    describe('Problem 21: 4 === 4', function () {
       it('should be true', function () {
           assert.equal(fourEqualTofour, 4 === 4);
       });
     });
 
-    describe('Problem 18: 4 !== 4', function () {
+    describe('Problem 22: 4 !== 4', function () {
       it('should be false', function () {
           assert.equal(fourNotEqualTofour, 4 !== 4);
       });
     });
 
-    describe('Problem 19: -3 === 10', function () {
+    describe('Problem 23: -3 === 10', function () {
       it('should be false', function () {
           assert.equal(negativeThreeEqualToTen, -3 === 10);
       });
     });
 
-    describe('Problem 20: -3 < 10', function () {
+    describe('Problem 24: -3 < 10', function () {
       it('should be true', function () {
           assert.equal(negativeThreeLessThanTen, -3 < 10);
       });
     });
 
-    describe('Problem 21: -3 <= 10', function () {
+    describe('Problem 25: -3 <= 10', function () {
       it('should be true', function () {
           assert.equal(negativeThreeLessThanOrEqualToTen, -3 <= 10);
       });
     });
 
-    describe('Problem 22: -3 > 10', function () {
+    describe('Problem 26: -3 > 10', function () {
       it('should be false', function () {
           assert.equal(negativeThreeGreaterThanTen, -3 > 10);
       });
     });
 
-    describe('Problem 23: -3 >= 10', function () {
+    describe('Problem 27: -3 >= 10', function () {
       it('should be false', function () {
           assert.equal(negativeThreeGreaterThanOrEqualToTen, -3 >= 10);
+      });
+    });
+
+    describe('Problem 28: \'4\' == 4', function () {
+      it('should be true', function () {
+          assert.equal(stringFourEqualsNumberFour, '4' == 4);
+      });
+    });
+
+    describe('Problem 29: \'4\' != 4', function () {
+      it('should be false', function () {
+          assert.equal(stringFourNotEqualsNumberFour, '4' != 4);
+      });
+    });
+
+    describe('Problem 30: \'4\' === 4', function () {
+      it('should be false', function () {
+          assert.equal(stringFourStrictEqualsNumberFour, '4' === 4);
+      });
+    });
+
+    describe('Problem 31: \'4\' !== 4', function () {
+      it('should be true', function () {
+          assert.equal(stringFourStrictNotEqualsNumberFour, '4' !== 4);
       });
     });
   });
