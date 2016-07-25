@@ -276,6 +276,11 @@ describe('Lesson 2 Homework', function () {
     });
 
     describe('Problem 8: testNumber(number)', function () {
+      it('should be defined and of type function', function () {
+        assert(!(typeof testNumber === 'undefined'));
+        assert(typeof testNumber === 'function');
+      });
+      
       it('should return "divisible by 4" when number is divisible by 4', function () {
           assert.equal(testNumber(4), 'divisible by 4');
       });
