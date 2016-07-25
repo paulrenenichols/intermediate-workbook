@@ -227,7 +227,7 @@ describe('Lesson 1 Homework', function () {
 
     describe('Problem 1: null variable myNull', function () {
       it('should be null', function () {
-          assert.equal(myNull, null);
+          assert(myNull === null);
       });
     });
 
