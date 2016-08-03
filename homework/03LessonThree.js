@@ -188,6 +188,12 @@ describe('Lesson 3 Homework', function () {
       });
     });
 
+    describe('Problem 10: replace \'fred\' with \'george\'', function () {
+      it('should be \'george\'', function () {
+        assert.equal(nameArray[1], 'george');
+      });
+    });
+
     describe('Problem 11: replace the center element', function () {
       it('should not equal 5', function () {
         assert(threeByThreeArray[1][1] !== 5);
