@@ -29,7 +29,7 @@ var numberArrayAfterPush = [1, 2, 3, 4, 5, 6];
 var numberArrayAfterUnshift = [0, 1, 2, 3, 4, 5];
 
 // Problem 5:
-// Use pop() and shift to make the array bravestWarriors look like this:
+// Use pop() and shift() to make the array bravestWarriors look like this:
 // ['Danny', 'Chris', 'Beth', 'Wallow']
 var bravestWarriors = ['Catbug', 'Danny', 'Chris', 'Beth', 'Wallow', 'Impossibear'];
 bravestWarriors.pop();
@@ -43,21 +43,64 @@ fruit.push('mango');
 fruit.unshift('banana');
 
 // ****
+// Objects (Associative Arrays)
+// ****
+
+// Problem 7:
+// Create an empty object
+var emptyObject = {};
+
+// Problem 8:
+// Create an object with the following key, value pairs:
+// 1) emptyObject:  {}
+// 2) emptyArray:   []
+// 3) name:         'bob'
+// 4) number:       42
+var problemEightObject = {
+  emptyObject: {},
+  emptyArray: [],
+  name:       'bob',
+  number:     42
+};
+
+// Problem 9:
+// DON'T EDIT problemNineObject!!!!
+var problemNineObject = {
+  'fav food': 'pizza',
+  city:       'houston'
+};
+// update 'fav food' so that its value is tacos
+// update city so that its value is austin
+problemNineObject['fav food'] = 'tacos';
+problemNineObject.city = 'austin';
+
+// Problem 10:
+// DON'T EDIT nestedObjects!!!!
+var nestedObjects = {
+  someNumbers: [1, 2, 3.14159, 4, 5, 6],
+  users: {
+    'fred astaire': {
+      hometown: 'Omaha'
+    },
+    'bob roberts': {
+      starring: 'John Cusack'
+    }
+  }
+};
+// update the starring property to have the value 'Tim Robbins'
+nestedObjects.users['bob roberts'].starring = 'Tim Robbins';
+
+
+// ****
 // Concept Checkpoint
 //
 // Write your answer in comments
 //
-// What is a function? How do you define a function in Javascript?
+// What is an associative array? What is the difference between an array and an associative array?
 //
 // Your Answer Goes Here:
 //
 //
-// What is a return value?
-//
-// Your Answer Goes Here:
-//
-//
-
 
 // ****
 // Tests
@@ -110,6 +153,52 @@ describe('Lesson 4 Homework', function () {
     describe('Problem 6: fruit push() and unshift()', function () {
       it('should have added mango and banana', function () {
         assert.deepStrictEqual(fruit, ['banana', 'kiwi', 'apple', 'orange', 'grapes', 'mango']);
+      });
+    });
+  });
+
+
+  describe('Objects (Associative Arrays)', function () {
+
+    describe('Problem 7: create empty object', function () {
+      it('should be an empty object', function () {
+        assert.deepStrictEqual(emptyObject, {});
+      });
+    });
+
+    describe('Problem 8: create an object with keys and values', function () {
+      it('should be an object with the right keys and values', function () {
+        assert.deepStrictEqual(problemEightObject, {
+          emptyObject: {},
+          emptyArray: [],
+          name:       'bob',
+          number:     42
+        });
+      });
+    });
+
+    describe('Problem 9: update an object', function () {
+      it('should have fav food as tacos, city as austin', function () {
+        assert.deepStrictEqual(problemNineObject, {
+          'fav food': 'tacos',
+          city: 'austin'
+        });
+      });
+    });
+
+    describe('Problem 10: update properties in a nested object', function () {
+      it('should should have the key starring with value Tim Robbins', function () {
+        assert.deepStrictEqual(nestedObjects,  {
+          someNumbers: [1, 2, 3.14159, 4, 5, 6],
+          users: {
+            'fred astaire': {
+              hometown: 'Omaha'
+            },
+            'bob roberts': {
+              starring: 'Tim Robbins'
+            }
+          }
+        });
       });
     });
   });
