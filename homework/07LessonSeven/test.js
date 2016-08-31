@@ -51,15 +51,15 @@ describe('Lesson 7 Homework', function () {
 
   describe('id selectors', function () {
 
-    describe('Problem 3: window.main', function () {
+    describe('Problem 3: window.idMain', function () {
       it('should have the #main element selected', function () {
-        assert($('#main').is(window.main));
+        assert($('#main').is(window.idMain));
       });
     });
 
-    describe('Problem 4: window.secondary', function () {
+    describe('Problem 4: window.idSecondary', function () {
       it('should have the #secondary element selected', function () {
-        assert($('#secondary').is(window.secondary));
+        assert($('#secondary').is(window.idSecondary));
       });
     });
 

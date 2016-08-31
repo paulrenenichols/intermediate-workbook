@@ -26,13 +26,13 @@ $(document).on('ready', function() {
 
   // Problem 3:
   // select the element with id="main"
-  // assign the selected jQuery object to the property window.main
-  window.main = $('#main');
+  // assign the selected jQuery object to the property window.idMain
+  window.idMain = $('#main');
 
   // Problem 4:
   // select the element with id="secondary"
-  // assign the selected jQuery object to the the property window.secondary
-  window.secondary = $('#secondary');
+  // assign the selected jQuery object to the the property window.idSecondary
+  window.idSecondary = $('#secondary');
 
   // ****
   // class selectors
